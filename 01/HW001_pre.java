@@ -68,6 +68,7 @@ public class HW001_pre {
                     if (nameList.size() != count) {
 
                         System.out.println("삭제완료!");
+                        count--;
                         break;
                         
                     } else {
