@@ -7,15 +7,21 @@ import java.util.ArrayList;
 public class PersonManager {
 
     private ArrayList<Person> personList=new ArrayList<>();
-    private String tempName;
+
     //등록
     public boolean registPerson(Person person){
 
-        boolean isDuplicated=false;
+        boolean isDuplicated=false; //중복X
 
         for(int i=0;i<personList.size();i++){
+
             if(personList.get(i).getSsn().equals(person.getSsn())){
-                isDuplicated=true;
+                isDuplicated=true; //중복O
+
+                //personList.replaceAll(tempName);
+                //String tempName = person.getName();
+                //String newName = tempName.replace(tempName, );
+
             }
         }
 
@@ -24,23 +30,57 @@ public class PersonManager {
         }
         return isDuplicated;
     }
+/*
+입력을 해
+주민번호가 같아 -> 이름을 수정을 해
 
-    public boolean updatePerson(Person person){
+김민수, 123-123
+김수민, 123-123
 
-        boolean isDuplicated=false;
+
+    public void Change(Person person){
+
         for(int i=0;i<personList.size();i++){
-            if(personList.get(i).getSsn().equals(person.getSsn())){
-                isDuplicated=true;
-                tempName = person.getSsn();
+            if(personList.get(i).getName().equals(person.getName())){
+                String tempName = personList.get(i).getName();
+
+                String temp;
+                String newName = tempName.replace(tempName, );
+
+            }else{
+
             }
         }
-        if(!isDuplicated){
-            tempName.replace()
 
-            personList.add(person);
+    }
+     */
+
+
+    public boolean updatePerson(String name, String ssn, String name2){
+
+        boolean isDuplicated = false; //중복X
+
+        for(int i=0;i<personList.size();i++){
+            if(personList.get(i).getName().equals(name)){
+
+                //String tempName = personList.get(i).getName();
+
+                //String temp;
+                //String newName = tempName.replace(tempName, );
+                isDuplicated=false;
+
+                //personList.set(i, );
+            }else{
+                isDuplicated=true;
+            }
+        }
+
+        if(!isDuplicated){
+
+            String newPerson = name.replace(name, name2);
+            personList.add(new Person(newPerson, ssn));
         }
         return isDuplicated;
-
     }
 
 
