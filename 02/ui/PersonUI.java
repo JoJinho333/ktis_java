@@ -10,7 +10,6 @@ import java.util.Scanner;
 2.출력
 3.삭제
 4.프로그램 종료
-
 +추가 : 3번에 수정 기능 부여 - 같은 주민번호를 입력받았을 때 이름을 수정하게끔
  */
 public class PersonUI {
@@ -87,13 +86,18 @@ public class PersonUI {
     }
 
     public void updatePerson() {
-        System.out.println("주민번호를 입력하세요.");
+        System.out.println("이름을 입력하세요.");
+        String name = scString.nextLine();
+        System.out.println("주민번호를 입력");
         String ssn = scString.nextLine();
+        System.out.println("수정할 이름을 입력하세요.");
+        String name2 = scString.nextLine();
 
-        boolean result = personManager.registPerson(new Person(ssn));
+        boolean result = personManager.updatePerson(name,ssn, name2);
 
         if (!result) {
             System.out.println("수정성공.");
+
         } else {
             System.out.println("수정실패.");
         }
