@@ -5,6 +5,14 @@ import vo.Person;
 
 import java.util.Scanner;
 
+/*
+1.입력
+2.출력
+3.삭제
+4.프로그램 종료
+
++추가 : 3번에 수정 기능 부여 - 같은 주민번호를 입력받았을 때 이름을 수정하게끔
+ */
 public class PersonUI {
 
     private PersonManager personManager = new PersonManager();
@@ -13,14 +21,14 @@ public class PersonUI {
     private boolean flag = true;
     private int choice;
 
-    public PersonUI(){
+    public PersonUI() {
 
-        while(flag){
+        while (flag) {
 
             menu();
-            choice= scInt.nextInt();
+            choice = scInt.nextInt();
 
-            switch(choice){
+            switch (choice) {
                 case 1:
                     registPerson();
                     break;
@@ -30,65 +38,77 @@ public class PersonUI {
                     break;
 
                 case 3:
-                    deletePerson();
+                    updatePerson();
                     break;
 
                 case 4:
+                    deletePerson();
+                    break;
+
+                case 5:
                     flag = false;
-                    System.out.println("프로그램을 종료합니다.");
+                    System.out.println("프로그램 종료");
                     break;
             }
-
         }
-
     }
-    public void deletePerson(){
+
+    public void menu() {
+
+        System.out.println("===================");
+        System.out.println("1. 등록");
+        System.out.println("2. 출력");
+        System.out.println("3. 수정");
+        System.out.println("4. 삭제");
+        System.out.println("5. 종료");
+        System.out.println("===================");
+    }
+
+    public void registPerson() {
+
+        System.out.println("이름을 입력");
+        String name = scString.nextLine();
+        System.out.println("주민번호를 입력");
+        String ssn = scString.nextLine();
+
+        boolean result = personManager.registPerson(new Person(name, ssn));
+
+        if (!result) {
+            System.out.println("등록성공.");
+        } else {
+            System.out.println("등록실패.");
+        }
+    }
+
+    public void printAll() {
+        for (Person person : personManager.getPersonList()) {
+            System.out.println(person);
+        }
+    }
+
+    public void updatePerson() {
+        System.out.println("주민번호를 입력하세요.");
+        String ssn = scString.nextLine();
+
+        boolean result = personManager.registPerson(new Person(ssn));
+
+        if (!result) {
+            System.out.println("수정성공.");
+        } else {
+            System.out.println("수정실패.");
+        }
+    }
+
+    public void deletePerson() {
         System.out.println("삭제할 주민번호를 입력 해주세요.");
         String ssn = scString.nextLine();
 
         boolean result = personManager.deletePerson(ssn);
 
-        if(result){
+        if (result) {
             System.out.println("삭제완료");
-        }else{
+        } else {
             System.out.println("삭제실패");
-
         }
-
-    }
-
-    public void printAll(){
-
-        for(Person person:personManager.getPersonList()){
-            System.out.println(person);
-        }
-
-    }
-    public void registPerson(){
-
-        System.out.println("이름을 입력 해주세요.");
-        String name= scString.nextLine();
-        System.out.println("주민번호를 입력 해주세요.");
-        String ssn= scString.nextLine();
-
-        boolean result = personManager.registPerson(new Person(name,ssn));
-
-        if(!result){
-            System.out.println("등록성공.");
-        }else{
-            System.out.println("등록실패.");
-        }
-    }
-
-
-    public void menu(){
-
-        System.out.println("===========");
-        System.out.println("1.등록");
-        System.out.println("2.출력");
-        System.out.println("3.삭제");
-        System.out.println("4.종료");
-        System.out.println("===========");
-
     }
 }
