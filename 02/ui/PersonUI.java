@@ -61,6 +61,7 @@ public class PersonUI {
         System.out.println("4. 삭제");
         System.out.println("5. 종료");
         System.out.println("===================");
+        System.out.println("선택지를 고르세요.");
     }
 
     public void registPerson() {
@@ -76,6 +77,9 @@ public class PersonUI {
             System.out.println("등록성공.");
         } else {
             System.out.println("등록실패.");
+
+            //update();
+
         }
     }
 
@@ -86,14 +90,17 @@ public class PersonUI {
     }
 
     public void updatePerson() {
-        System.out.println("이름을 입력하세요.");
-        String name = scString.nextLine();
+
         System.out.println("주민번호를 입력");
         String ssn = scString.nextLine();
+
+        System.out.println("이름을 입력하세요.");
+        String name = scString.nextLine();
+
         System.out.println("수정할 이름을 입력하세요.");
         String name2 = scString.nextLine();
 
-        boolean result = personManager.updatePerson(name,ssn, name2);
+        boolean result = personManager.updatePerson(ssn, name, name2);
 
         if (!result) {
             System.out.println("수정성공.");
