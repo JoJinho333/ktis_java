@@ -12,14 +12,12 @@ public class Person {
         this.name=name;
         this.ssn=ssn;
     }
-/*
-    public void Change(String name, String name2){
-        this.name=name;
-        this.name2=name2;
-
-    }
-
- */
+    /*
+        public void Change(String name, String name2){
+            this.name=name;
+            this.name2=name2;
+        }
+     */
     //getter
     public String getName(){
         return name;
