@@ -112,3 +112,73 @@ spring.bin으로 등록해야 한다.
 3. main.html에서 버튼, text칸 생성
 
 4. 기존의 함수와 비슷한 방식으로 클릭시 삭제 함수 생성
+
+=========================================================================================
+#2023.04.14
+공부 순서 : jpa -> mybatis
+
+jpa 사용해보기
+
+1. 파일 형식으로 학습 데이터를 올린다.
+2. 
+3. 
+4. 
+
+
+각각의 상황에 맞는 모델이 대략 4가지 정도가 있음
+
+파일 형식
+"prompt": " ",  "completion":" "
+
+========================
+JPA 만들기 보여줌
+이름 : SpringBoot
+file - lombok, spring web, maria db, thymeleaf, 
+2.7.11-snapshot
+
+java 버젼 -8
+application.properties파일에 DB정보 적어주기
+
+
+컨트롤러 - index.html파일로 보내준다 => 핵심!
+
+form 방식과 - 페이지 이동(페이지를 새로 그려주는 것)
+ajax 방식으로 보내주는게 있음 - (비동기 방식, 
+
+아무것도 안적으면 get 방식으로 감
+method="post"
+
+그냥 컨트롤러 - 
+
+레스트 컨트롤러 : 데이터를 보내기 때문에 
+
+==================
+VO, DTO, entity
+
+jp에서 파라미터
+=> DB 정보를 공개하면 안되기 때문에
+
+dto -> entity-> 
+vo -> 
+
+리퀘스트 - entity - db - 리스폰스  => 핵심!!!
+
+=====
+entity 파일 생성 후 @Table(name="테이블 이름")
+
+@Builder //lombok -> 빌더 패턴 100% 사용, 안쓰는 사람 못봄
+@AllArgsConstructor -> 모든 파라미터를 받아주는 생성자를 자동 생성
+@NoArgsConstructor -> 파라미터를 받지않는 생성자를 자동 생성
+
+=========
+MemberService 인터페이스에서 하나의 큰 틀을 짠다. - 설계적인 부분
+
+서비스 구현체를 만들지 않아도 설계가 완벽하다면 원래는 인터페이스로 완벽하게 구현이 가능하다
+
+@RequiredArgsConstructor -> 롬복을 쓰면 이걸로 캡슐화 @autowired를 생략할 수 있다.
+
+@Data -> 모든 롬복을 다 해결해줌
+MemberRequestDto.java에서 @Data를 선언해줌 
+
+
+빌더 패턴은 - ex) 멤버에 멤버 아이디를 사용한다고 기록해주는 것
